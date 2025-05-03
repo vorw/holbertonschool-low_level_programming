@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
-* main - Entry point
+* print_alphabet - prints lower case alphabets
 *
-* Return: Always 0 (Success)
+* Description: hope this fixes betty style warning..
 */
 
 void print_alphabet(void)
