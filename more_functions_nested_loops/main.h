@@ -17,5 +17,6 @@ void times_table(void);
 int add(int, int);
 void print_to_98(int n);
 void print_numbers(void);
+void print_most_numbers(void);
 
 #endif
