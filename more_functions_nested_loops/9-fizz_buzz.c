@@ -26,7 +26,14 @@ int main(void)
 		}
 		else
 		{
-			printf("%i ", x);
+			if (x != 100)
+			{
+				printf("%i ", x);
+			}
+			else
+			{
+				printf("%i", x);
+			}
 		}
 	}
 
