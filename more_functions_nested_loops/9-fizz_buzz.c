@@ -30,10 +30,6 @@ int main(void)
 			{
 				printf("%i ", x);
 			}
-			else
-			{
-				printf("%i", x);
-			}
 		}
 	}
 
