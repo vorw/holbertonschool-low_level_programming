@@ -2,7 +2,6 @@
 
 /**
  * find_sqrt - helps
- * _sqrt_recursion - returns n.s.r of number
  * @n: number 1
  * @m: number 2
  * Return: natural square root, otherwise -1 if its not a n.s.r
@@ -20,8 +19,17 @@ int find_sqrt(int n, int m)
 		return (-1);
 	}
 
-	return (find_sqrt(n, m + 1));
+	else
+	{
+		return (find_sqrt(n, m + 1));
+	}
 }
+
+/**
+ * _sqrt_recursion - take a given number
+ * @n: number 1
+ * Return: natural square root, otherwise -1
+ */
 
 int _sqrt_recursion(int n)
 {
@@ -30,5 +38,8 @@ int _sqrt_recursion(int n)
 		return (-1);
 	}
 
-	return (find_sqrt(n, 0));
+	else
+	{
+		return (find_sqrt(n, 0));
+	}
 }
