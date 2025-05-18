@@ -22,8 +22,8 @@ int is_positive_number(char *str)
 		if (!isdigit(str[i]))
 		{
 			return (0);
-			i++;
 		}
+		i++;
 	}
 
 	return (1);
