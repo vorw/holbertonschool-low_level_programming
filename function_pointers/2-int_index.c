@@ -19,6 +19,11 @@ int int_index(int *array, int size, int (*cmp)(int))
 		return (-1);
 	}
 
+	if (!array || !cmp)
+	{
+		return (-1);
+	}
+
 	for (; sizee < size; sizee++)
 	{
 		if (cmp(array[sizee]) == 1)
