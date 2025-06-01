@@ -1,6 +1,13 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/**
+ * print_numbers - print numbers followed by a new line
+ * @separator: string beetween numbers
+ * @n: num of integers passed to the function
+ * Return: -
+ */
+
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
 	va_list args;
@@ -19,6 +26,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		}
 	}
 
-    va_end(args);
-    printf("\n");
+	va_end(args);
+	printf("\n");
 }
