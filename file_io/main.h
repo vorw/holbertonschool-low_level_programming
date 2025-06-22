@@ -1,5 +1,5 @@
-#ifndef _FILE_IO_
-#define _FILE_IO_
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stdio.h>
 #include <stdlib.h>
