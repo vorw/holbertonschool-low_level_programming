@@ -33,20 +33,8 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 
-	while (1)
+	while ((n_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		n_read = read(fd_from, buffer, BUFFER_SIZE);
-		if (n_read == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			close(fd_from);
-			close(fd_to);
-			exit(98);
-		}
-
-		if (n_read == 0)
-			break;
-
 		n_written = write(fd_to, buffer, n_read);
 		if (n_written != n_read)
 		{
@@ -56,6 +44,13 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
+		if (n_read == -1)
+                {
+                        dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+                        close(fd_from);
+                        close(fd_to);
+                        exit(98);
+		}
 
 	if (close(fd_from) == -1)
 	{
