@@ -6,17 +6,10 @@
 
 #define BUFFER_SIZE 1024
 
-/**
- * main - Copies content of a file to another file.
- * @argc: Number of arguments
- * @argv: Argument vector
- * Return: 0 on success, or appropriate exit code on failure
- */
-
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to;
-	ssize_t n_read, n_write;
+	ssize_t n_read, n_written;
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
@@ -40,24 +33,28 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 
-	while ((n_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
+	while (1)
 	{
-		n_write = write(fd_to, buffer, n_read);
-		if (n_write != n_read)
+		n_read = read(fd_from, buffer, BUFFER_SIZE);
+		if (n_read == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			close(fd_from);
+			close(fd_to);
+			exit(98);
+		}
+
+		if (n_read == 0)
+			break;
+
+		n_written = write(fd_to, buffer, n_read);
+		if (n_written != n_read)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			close(fd_from);
 			close(fd_to);
 			exit(99);
 		}
-	}
-
-	if (n_read == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		close(fd_from);
-		close(fd_to);
-		exit(98);
 	}
 
 	if (close(fd_from) == -1)
