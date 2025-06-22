@@ -1,4 +1,8 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 #define BUFFER_SIZE 1024
 
@@ -6,7 +10,6 @@ int main(int argc, char *argv[])
 {
 	int fd_from, fd_to;
 	ssize_t n_read, n_write;
-	const int BUFFER_SIZE = 1024;
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
